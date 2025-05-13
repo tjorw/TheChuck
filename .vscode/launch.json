@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/TheChuck/bin/Debug/net6.0/TheChuck.dll",
+            "program": "${workspaceFolder}/TheChuck/bin/Debug/net8.0/TheChuck.dll",
             "args": [],
             "cwd": "${workspaceFolder}/TheChuck",
             "stopAtEntry": false,
