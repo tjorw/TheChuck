@@ -219,7 +219,6 @@ Gå igenom listan innan du öppnar `FACIT.md`. Bocka av varje punkt du faktiskt 
 
 **Del 1 – Driftsättning**
 - [ ] Jag har skapat ett konto och en webbplats på MonsterASP.NET
-- [ ] Jag har forkat repot och lagt till de fyra GitHub Secrets
 - [ ] Actions-pipelinen har körts och alla steg är gröna
 - [ ] Applikationen är tillgänglig och fungerar på min MonsterASP.NET-adress
 - [ ] Jag har besvarat de tre reflektionsfrågorna skriftligt
