@@ -37,6 +37,10 @@ TheChuck.Infrastructure/  – Tjänster och HTTP-klient
 TheChuckTests/            – Enhetstester med MSTest och fake-objekt
 ```
 
+## Guider
+
+- [Uppgradera till .NET 9](docs/upgrade-dotnet9.md) om det är det ni använder annars?
+
 ## Laboration
 
 Se [LABORATION.md](LABORATION.md) för uppgifterna. Använd [FACIT.md](FACIT.md) för självbedömning när du är klar.
