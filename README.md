@@ -2,6 +2,10 @@
 
 Övningsprojekt för kursen SUVNET. Applikationen hämtar Chuck Norris-skämt från ett öppet API och demonstrerar hur man bygger en ASP.NET Core-applikation med lagerarkitektur, Dependency Injection och enhetstester.
 
+## OBS – avsiktliga defekter
+
+Det här projektet innehåller medvetet inbyggda defekter och ofullständigheter, eftersom det är en bas för en skoluppgift. Förvänta dig att hitta kod som kan förbättras och funktioner som inte är implementerade – det är en del av uppgiften.
+
 ## Kom igång
 
 ```bash

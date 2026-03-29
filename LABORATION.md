@@ -189,6 +189,30 @@ Alla tester ska följa **Arrange–Act–Assert**-mönstret och använda fake-ob
 
 ---
 
+### Extrauppgift – testar testerna verkligen rätt sak?
+
+Titta noga på det här testet från facit för uppgift 3.1:
+
+```csharp
+[TestMethod]
+public async Task OnGet_WithCategory_ShouldDisplayJokeFromCategory()
+{
+    var joke = new Joke() { Value = "Category joke" };
+    var sut = new IndexModel(NullLogger<IndexModel>.Instance, new JokeServiceFake(joke));
+    sut.Category = "science";
+
+    await sut.OnGet();
+
+    Assert.AreEqual("CATEGORY JOKE", sut.DisplayText);
+}
+```
+
+**Fråga:** Bevisar det här testet att `GetJokeFromCategory` faktiskt anropas? Eller skulle testet vara grönt även om implementationen *alltid* anropar `GetRandomJoke`? Varför?
+
+Resonera kring frågan och fundera på hur testet skulle behöva se ut för att verkligen verifiera att rätt metod anropas. Kolla sedan svaret i `FACIT.md`.
+
+---
+
 ## Är jag klar?
 
 Gå igenom listan innan du öppnar `FACIT.md`. Bocka av varje punkt du faktiskt genomfört.

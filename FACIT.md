@@ -218,6 +218,59 @@ public async Task OnGet_WithCategory_WhenServiceFails_ShouldDisplayErrorMessage(
 
 ---
 
+### Extrauppgift – testar testerna verkligen rätt sak?
+
+**Nej – testet bevisar inte att `GetJokeFromCategory` anropas.**
+
+Det beror på hur `JokeServiceFake` är implementerad. Eftersom den returnerar *samma* joke från både `GetRandomJoke` och `GetJokeFromCategory`, skulle testet vara grönt även om `IndexModel` ignorerar `Category` och alltid anropar `GetRandomJoke`. Testet verifierar bara att `DisplayText` innehåller rätt text – inte *vilken väg* koden tog.
+
+Prova själv: ta bort villkoret i `OnGet()` och anropa alltid `GetRandomJoke()`. Testet blir fortfarande grönt.
+
+**Hur fixar man det?**
+
+Det enklaste sättet utan externa bibliotek är att ge `JokeServiceFake` två separata skämt – ett för varje metod – och sedan verifiera att *rätt* skämt visas:
+
+```csharp
+internal class JokeServiceFake : IJokeService
+{
+    private readonly Joke _randomJoke;
+    private readonly Joke _categoryJoke;
+
+    public JokeServiceFake(Joke randomJoke, Joke categoryJoke)
+    {
+        _randomJoke = randomJoke;
+        _categoryJoke = categoryJoke;
+    }
+
+    public Task<Joke?> GetRandomJoke() => Task.FromResult<Joke?>(_randomJoke);
+    public Task<Joke?> GetJokeFromCategory(string category) => Task.FromResult<Joke?>(_categoryJoke);
+}
+```
+
+Testet blir nu meningsfullt – det *kan* bara bli grönt om rätt metod anropas:
+
+```csharp
+[TestMethod]
+public async Task OnGet_WithCategory_ShouldDisplayJokeFromCategory()
+{
+    var randomJoke = new Joke() { Value = "Random joke" };
+    var categoryJoke = new Joke() { Value = "Category joke" };
+    var sut = new IndexModel(NullLogger<IndexModel>.Instance,
+        new JokeServiceFake(randomJoke, categoryJoke));
+    sut.Category = "science";
+
+    await sut.OnGet();
+
+    Assert.AreEqual("CATEGORY JOKE", sut.DisplayText); // misslyckas om GetRandomJoke anropades
+}
+```
+
+**Vad lär vi oss av det här?**
+
+Ett test som alltid är grönt oavsett implementation ger falsk trygghet – det verifierar ingenting. Det kallas ett *meningslöst test*. Bra tester ska kunna *misslyckas* om koden är fel. Det är därför man skriver det röda testet först i TDD: om testet aldrig kan bli rött kan det inte heller bevisa att implementationen fungerar.
+
+---
+
 ### 3.2 – Byt ut namn i skämtet
 
 **Ordningen är avgörande.** Ersättningen måste ske *innan* `ToUpper()` – annars söker du efter `"Chuck Norris"` i en sträng som redan är `"CHUCK NORRIS"` och ingenting ersätts.
