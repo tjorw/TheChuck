@@ -13,7 +13,7 @@ namespace TheChuckTests.Fakes
 
         public Task<Joke?> GetJokeFromCategory(string category)
         {
-            throw new NotImplementedException();
+            return Task.FromResult<Joke?>(joke);
         }
 
         public async Task<Joke?> GetRandomJoke()

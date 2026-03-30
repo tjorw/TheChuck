@@ -14,7 +14,9 @@ public class JokeService : IJokeService
 
     public async Task<Joke?> GetJokeFromCategory(string category)
     {
-        string url = "https://api.chucknorris.io/jokes/random?category=" + category;
+        // BUGG 4: Fel versalisering på query-parametern – API:et förväntar sig "category" (gemener),
+        // inte "Category". Felet syns inte i enhetstester eftersom de använder fake-objekt.
+        string url = "https://api.chucknorris.io/jokes/random?Category=" + category;
 
         try
         {

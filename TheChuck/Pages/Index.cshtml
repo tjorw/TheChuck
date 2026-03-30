@@ -1,9 +1,10 @@
-﻿@page
+@page
 @model IndexModel
 @{
     ViewData["Title"] = "The Chuck";
 }
-  
+
 <div class="text-center">
-    @Model.DisplayText
+    <p>@Model.DisplayText</p>
+    <p><small>Antal ord: @Model.WordCount</small></p>
 </div>
