@@ -49,6 +49,9 @@ TheChuckTests/            – Enhetstester med MSTest och fake-objekt
 
 Se [LABORATION.md](LABORATION.md) för uppgifterna. Använd [FACIT.md](FACIT.md) för självbedömning när du är klar.
 
+## Extra Laboration
+Vill du träna debugging och felsökning, så finns även branchen debugging-lab och instruktioner i: [LABORATION_DEBUGGING.md](https://github.com/tjorw/TheChuck/blob/debugging-lab/LABORATION_DEBUGGING.md)
+
 ## Externa resurser
 
 ### Verktyg och hosting
