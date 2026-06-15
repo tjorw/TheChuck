@@ -1,3 +1,5 @@
+Hej och hå!
+
 # The Chuck
 
 Övningsprojekt för kursen SUVNET. Applikationen hämtar Chuck Norris-skämt från ett öppet API och demonstrerar hur man bygger en ASP.NET Core-applikation med lagerarkitektur, Dependency Injection och enhetstester.
